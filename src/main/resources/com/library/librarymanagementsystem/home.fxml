@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.library.librarymanagementsystem.controllers.HomeController"
+            prefWidth="1000" prefHeight="650">
+
+    <!-- الشريط العلوي -->
+    <top>
+        <HBox styleClass="navbar" alignment="CENTER_LEFT" spacing="15">
+            <Text text=" Library System" styleClass="nav-title"/>
+            <HBox HBox.hgrow="ALWAYS"/>
+            <Label fx:id="welcomeLabel" styleClass="nav-welcome"/>
+            <Label fx:id="roleLabel"   styleClass="nav-role"/>
+            <Button text="Logout" onAction="#handleLogout" styleClass="logout-btn"/>
+        </HBox>
+    </top>
+
+    <!-- المحتوى الرئيسي -->
+    <center>
+        <VBox alignment="CENTER" spacing="30" styleClass="home-center">
+            <Text text="Welcome to Library Management System" styleClass="home-title"/>
+            <Text text="Choose a section to get started"     styleClass="home-subtitle"/>
+
+            <HBox alignment="CENTER" spacing="20">
+                <Button text=" Dashboard" onAction="#goToDashboard"
+                        styleClass="home-card-btn" prefWidth="180" prefHeight="100"/>
+                <Button text=" Books"     onAction="#goToBooks"
+                        styleClass="home-card-btn" prefWidth="180" prefHeight="100"/>
+                <Button text=" Members"   onAction="#goToMembers"
+                        styleClass="home-card-btn" prefWidth="180" prefHeight="100"/>
+                <Button text=" Profile"   onAction="#goToProfile"
+                        styleClass="home-card-btn" prefWidth="180" prefHeight="100"/>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

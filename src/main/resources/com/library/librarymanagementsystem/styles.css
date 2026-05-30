@@ -1,0 +1,133 @@
+/* ===== عام ===== */
+.root {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-background-color: #F0F4F8;
+}
+
+/* ===== صفحة تسجيل الدخول ===== */
+.login-root {
+    -fx-background-color: linear-gradient(to bottom right, #1a1a2e, #16213e, #0f3460);
+}
+.app-title {
+    -fx-font-size: 28px;
+    -fx-fill: #E8F4FD;
+    -fx-font-weight: bold;
+}
+.subtitle {
+    -fx-font-size: 14px;
+    -fx-fill: #A0AEC0;
+}
+.login-card {
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    -fx-padding: 40;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 20, 0, 0, 5);
+}
+.field-label {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4A5568;
+}
+.input-field {
+    -fx-pref-height: 40px;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #CBD5E0;
+    -fx-padding: 0 10;
+    -fx-font-size: 14px;
+}
+.input-field:focused {
+    -fx-border-color: #4299E1;
+    -fx-effect: dropshadow(gaussian, #4299E1, 5, 0, 0, 0);
+}
+.primary-btn {
+    -fx-background-color: #4299E1;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-pref-height: 45px;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+.primary-btn:hover {
+    -fx-background-color: #3182CE;
+}
+.error-label {
+    -fx-text-fill: #E53E3E;
+    -fx-font-size: 13px;
+}
+
+/* ===== شريط التنقل ===== */
+.navbar {
+    -fx-background-color: #2D3748;
+    -fx-padding: 12 20;
+}
+.nav-title {
+    -fx-font-size: 20px;
+    -fx-fill: white;
+    -fx-font-weight: bold;
+}
+.nav-welcome {
+    -fx-text-fill: #E2E8F0;
+    -fx-font-size: 14px;
+}
+.nav-role {
+    -fx-text-fill: #68D391;
+    -fx-font-size: 12px;
+}
+.logout-btn, .nav-btn {
+    -fx-background-color: #E53E3E;
+    -fx-text-fill: white;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+    -fx-padding: 5 15;
+}
+.logout-btn:hover, .nav-btn:hover {
+    -fx-background-color: #C53030;
+}
+
+/* ===== الصفحة الرئيسية ===== */
+.home-center   { -fx-padding: 50; }
+.home-title    { -fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: #2D3748; }
+.home-subtitle { -fx-font-size: 15px; -fx-fill: #718096; }
+.home-card-btn {
+    -fx-background-color: white;
+    -fx-text-fill: #2D3748;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 8, 0, 0, 3);
+    -fx-cursor: hand;
+}
+.home-card-btn:hover {
+    -fx-background-color: #4299E1;
+    -fx-text-fill: white;
+}
+
+/* ===== Dashboard ===== */
+.dashboard-center { -fx-padding: 30; }
+.stat-card {
+    -fx-background-color: white;
+    -fx-padding: 25 40;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 3);
+    -fx-min-width: 180;
+}
+.stat-title  { -fx-font-size: 14px; -fx-fill: #718096; }
+.stat-number { -fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #4299E1; }
+
+/* ===== أزرار CRUD ===== */
+.add-btn    { -fx-background-color: #48BB78; -fx-text-fill: white; -fx-background-radius: 6; -fx-cursor: hand; }
+.update-btn { -fx-background-color: #ECC94B; -fx-text-fill: white; -fx-background-radius: 6; -fx-cursor: hand; }
+.delete-btn { -fx-background-color: #FC8181; -fx-text-fill: white; -fx-background-radius: 6; -fx-cursor: hand; }
+.clear-btn  { -fx-background-color: #A0AEC0; -fx-text-fill: white; -fx-background-radius: 6; -fx-cursor: hand; }
+.search-btn { -fx-background-color: #4299E1; -fx-text-fill: white; -fx-background-radius: 6; -fx-cursor: hand; }
+.add-btn:hover    { -fx-background-color: #38A169; }
+.update-btn:hover { -fx-background-color: #D69E2E; }
+.delete-btn:hover { -fx-background-color: #E53E3E; }
+
+/* ===== النموذج ===== */
+.form-section  { -fx-padding: 20; -fx-background-color: white; }
+.form-title    { -fx-font-size: 18px; -fx-font-weight: bold; -fx-fill: #2D3748; }
+.table-section { -fx-padding: 15; }
+.status-label  { -fx-font-size: 13px; -fx-text-fill: #2D3748; }

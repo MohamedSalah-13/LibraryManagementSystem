@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.library.librarymanagementsystem.controllers.LoginController"
+      alignment="CENTER" spacing="20"
+      styleClass="login-root"
+      prefWidth="900" prefHeight="600">
+
+    <Text text=" Library Management System" styleClass="app-title"/>
+    <Text text="Please login to continue"    styleClass="subtitle"/>
+
+    <VBox styleClass="login-card" spacing="15" maxWidth="400">
+
+        <Label text="Username" styleClass="field-label"/>
+        <TextField fx:id="usernameField" promptText="Enter username" styleClass="input-field"/>
+
+        <Label text="Password" styleClass="field-label"/>
+        <PasswordField fx:id="passwordField" promptText="Enter password" styleClass="input-field"/>
+
+        <Label fx:id="errorLabel" styleClass="error-label"/>
+
+        <Button text=" Login" onAction="#handleLogin"
+                styleClass="primary-btn" maxWidth="Infinity"/>
+    </VBox>
+</VBox>

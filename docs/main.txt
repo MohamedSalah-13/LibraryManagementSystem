@@ -1,0 +1,49 @@
+PLEASE NOTE THAT THIS PROJECT IS WITH A TOTAL OF 20 POINTS. 
+
+This document serves as a comprehensive guide for your project. It outlines the description, requirements, and important instructions for your project.
+
+PROJECT DESCRIPTION
+You are required to submit a fully functional, responsive Desktop Application (front-end and back-end), consisting of at least 4-6 Scenes. 
+
+PROJECT OVERVIEW
+You are tasked to create a Desktop Application that offers services within a chosen field, such as Healthcare, Education, finance, Ecommerce, banking, fashion, or any other area of your preference. As a student your responsibility is to develop a fully responsive and functional Desktop Application in accordance with the specified requirements. You are expected to apply all the libraries, tools, techniques, and technologies acquired throughout your Object-oriented programming (2) course to design your Desktop Application. This Desktop Application must not only be fully functional but also present visual attractiveness and user-friendliness. Once the development process is complete. 
+
+PROJECT REQUIREMENTS
+•	Field Selection: Choose a field for your Desktop Application 's services that interests you, your enthusiasm will be reflected in the quality of your project. Define the core purpose and functionality of your Desktop Application within this field.
+•	Responsive Design: Ensure that your Desktop Application is fully responsive, by using different types of layouts, styles, alert and UI controls to provide a consistent user experience.
+•	Utilize Learned Tools and Technologies: Make use of all the programming languages, tools, techniques, libraries, and technologies you've acquired during Object Oriented programming 2 course to create a Desktop Application with effective design and functionality.
+
+The Desktop Application consists of at least 4-6 Scenes and at least one External Data Base, and at least must include the following:
+•	Login page: The Login page is the first thing users see when they open your Desktop Application. Its primary purpose is to make a positive and lasting first impression which contains:
+o	 A method to validate user input against the database records.
+o	Display appropriate error messages if the username or password is incorrect or if any field is left empty.
+•	Home Page: Design a home page using JavaFX that provides a welcoming interface for users which includes the following:
+o	 Appropriate components to display relevant information or features available in the application. 
+o	Ensure that the home page is accessible only after successful authentication of users' credentials.
+o	Retrieve and display information related to the authenticated user, such as their username, profile picture, or recent activity.
+o	Include navigation elements or buttons to access different sections or features of the application.
+o	Enable users to perform actions directly from the home page, such as viewing notifications, accessing settings, or initiating new tasks.
+o	Allow users to customize their home page layout or preferences, such as theme selection or Stage properties.
+o	Display dynamic content or updates relevant to the user, such as news feeds, calendar events, to do list, appointments, or upcoming tasks.
+o	Handle common events such as mouse clicks, key presses, mouse movements, and window resizing.
+
+
+
+
+
+
+•	Dashboard/Services: In this section, you can provide the products or services you offer. Include detailed descriptions, high-quality images, and pricing information if applicable. 
+o	Organize the dashboard layout to display key information and interactive components efficiently.
+o	Present relevant data or statistics that are essential for users to monitor or manage, such as financial summaries, task lists, or analytics.
+o	Include interactive components such as buttons, charts, or tables to allow users to perform actions directly from the dashboard, such as creating new entries, updating settings, or viewing detailed reports.
+o	Allow users to customize the layout or content of the dashboard based on their preferences, such as rearranging widgets or selecting which data to display.
+o	Use different types of events. 
+•	Database Design: Design an appropriate database schema using MySQL or any other relational database management system (RDBMS) that aligns with the requirements of the desktop application.
+o	Define tables, columns, and relationships based on the data entities and their associations within the application.
+o	Establish a connection between the JavaFX desktop application and the database using JDBC (Java Database Connectivity) for seamless data interaction.
+o	Implement methods or classes to perform CRUD (Create, Read, Update, Delete) operations on the database, allowing the application to store, retrieve, update, and delete data as needed.
+o	Implement methods or functions to handle database operations such as inserting new records, querying existing data, updating records, and deleting entries.
+o	Implement error handling mechanisms to gracefully manage exceptions and errors that may occur during database operations, ensuring the stability and reliability of the application.
+•	Submitting: In this stage, it is a must to ensure that the Desktop Application is uploaded to Edugate due to 6/6/2026.
+
+

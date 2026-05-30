@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.library.librarymanagementsystem.controllers.BooksController"
+            prefWidth="1100" prefHeight="700">
+
+    <top>
+        <HBox styleClass="navbar" alignment="CENTER_LEFT" spacing="15">
+            <Text text=" Books Management" styleClass="nav-title"/>
+            <HBox HBox.hgrow="ALWAYS"/>
+            <Button text=" Home" onAction="#goHome" styleClass="nav-btn"/>
+        </HBox>
+    </top>
+
+    <center>
+        <SplitPane>
+            <!-- الجدول وأدوات البحث -->
+            <VBox spacing="10" styleClass="table-section">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <TextField fx:id="searchField" promptText=" Search by title or author..."
+                               prefWidth="300"/>
+                    <Button text="Search" onAction="#handleSearch" styleClass="search-btn"/>
+                </HBox>
+
+                <TableView fx:id="booksTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colId"       text="ID"       prefWidth="50"/>
+                        <TableColumn fx:id="colTitle"    text="Title"    prefWidth="200"/>
+                        <TableColumn fx:id="colAuthor"   text="Author"   prefWidth="150"/>
+                        <TableColumn fx:id="colCategory" text="Category" prefWidth="120"/>
+                        <TableColumn fx:id="colQty"      text="Qty"      prefWidth="60"/>
+                        <TableColumn fx:id="colPrice"    text="Price"    prefWidth="80"/>
+                    </columns>
+                </TableView>
+
+                <Label fx:id="statusLabel" styleClass="status-label"/>
+            </VBox>
+
+            <!-- نموذج الإدخال -->
+            <VBox spacing="12" styleClass="form-section" prefWidth="300">
+                <Text text="Book Details" styleClass="form-title"/>
+
+                <Label text="Title *"/>
+                <TextField fx:id="titleField"    promptText="Book title"/>
+                <Label text="Author *"/>
+                <TextField fx:id="authorField"   promptText="Author name"/>
+                <Label text="ISBN"/>
+                <TextField fx:id="isbnField"     promptText="ISBN number"/>
+                <Label text="Category"/>
+                <TextField fx:id="categoryField" promptText="Category"/>
+                <Label text="Quantity"/>
+                <TextField fx:id="quantityField" promptText="Quantity"/>
+                <Label text="Price"/>
+                <TextField fx:id="priceField"    promptText="Price"/>
+                <Label text="Published Year"/>
+                <TextField fx:id="yearField"     promptText="Year"/>
+
+                <HBox spacing="10">
+                    <Button text="➕ Add"    onAction="#handleAdd"    styleClass="add-btn"    HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                    <Button text="✏ Update" onAction="#handleUpdate" styleClass="update-btn" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                </HBox>
+                <HBox spacing="10">
+                    <Button text=" Delete" onAction="#handleDelete" styleClass="delete-btn" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                    <Button text=" Clear"  onAction="#handleClear"  styleClass="clear-btn"  HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                </HBox>
+            </VBox>
+        </SplitPane>
+    </center>
+</BorderPane>

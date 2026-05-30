@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.library.librarymanagementsystem.controllers.ProfileController"
+            prefWidth="900" prefHeight="600">
+
+    <top>
+        <HBox styleClass="navbar" alignment="CENTER_LEFT" spacing="15">
+            <Text text="👤 My Profile" styleClass="nav-title"/>
+            <HBox HBox.hgrow="ALWAYS"/>
+            <Button text="🏠 Home" onAction="#goHome" styleClass="nav-btn"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox alignment="CENTER" spacing="0" styleClass="home-center">
+
+            <!-- بطاقة الملف الشخصي -->
+            <VBox styleClass="login-card" spacing="15" maxWidth="480">
+                <Text text="✏️ Edit Profile" styleClass="form-title"/>
+
+                <Label text="Username" styleClass="field-label"/>
+                <TextField fx:id="usernameField" styleClass="input-field"/>
+
+                <Label text="Full Name" styleClass="field-label"/>
+                <TextField fx:id="fullNameField" promptText="Enter full name" styleClass="input-field"/>
+
+                <Label text="Email" styleClass="field-label"/>
+                <TextField fx:id="emailField" promptText="Enter email" styleClass="input-field"/>
+
+                <Label text="New Password (leave blank to keep current)" styleClass="field-label"/>
+                <PasswordField fx:id="newPasswordField" promptText="New password" styleClass="input-field"/>
+
+                <Label fx:id="statusLabel" styleClass="status-label"/>
+
+                <Button text="💾 Save Changes" onAction="#handleSave"
+                        styleClass="primary-btn" maxWidth="Infinity"/>
+            </VBox>
+
+        </VBox>
+    </center>
+
+</BorderPane>

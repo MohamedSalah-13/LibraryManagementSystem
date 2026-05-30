@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.chart.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.library.librarymanagementsystem.controllers.DashboardController"
+            prefWidth="1000" prefHeight="650">
+
+    <top>
+        <HBox styleClass="navbar" alignment="CENTER_LEFT" spacing="15">
+            <Text text=" Dashboard" styleClass="nav-title"/>
+            <HBox HBox.hgrow="ALWAYS"/>
+            <Button text=" Home" onAction="#goHome" styleClass="nav-btn"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="30" styleClass="dashboard-center" alignment="CENTER">
+            <!-- بطاقات الإحصائيات -->
+            <HBox spacing="20" alignment="CENTER">
+                <VBox styleClass="stat-card" alignment="CENTER" spacing="5">
+                    <Text text=" Total Books" styleClass="stat-title"/>
+                    <Label fx:id="totalBooksLabel" text="0" styleClass="stat-number"/>
+                </VBox>
+                <VBox styleClass="stat-card" alignment="CENTER" spacing="5">
+                    <Text text=" Total Members" styleClass="stat-title"/>
+                    <Label fx:id="totalMembersLabel" text="0" styleClass="stat-number"/>
+                </VBox>
+                <VBox styleClass="stat-card" alignment="CENTER" spacing="5">
+                    <Text text=" Borrowed" styleClass="stat-title"/>
+                    <Label fx:id="borrowedLabel" text="0" styleClass="stat-number"/>
+                </VBox>
+            </HBox>
+
+            <!-- الرسم البياني -->
+            <BarChart fx:id="statsChart" prefHeight="300">
+                <xAxis><CategoryAxis label="Category"/></xAxis>
+                <yAxis><NumberAxis label="Count"/></yAxis>
+            </BarChart>
+        </VBox>
+    </center>
+</BorderPane>

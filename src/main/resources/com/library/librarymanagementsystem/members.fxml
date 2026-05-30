@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.library.librarymanagementsystem.controllers.MembersController"
+            prefWidth="1100" prefHeight="700">
+
+    <top>
+        <HBox styleClass="navbar" alignment="CENTER_LEFT" spacing="15">
+            <Text text="👥 Members Management" styleClass="nav-title"/>
+            <HBox HBox.hgrow="ALWAYS"/>
+            <Button text="🏠 Home" onAction="#goHome" styleClass="nav-btn"/>
+        </HBox>
+    </top>
+
+    <center>
+        <SplitPane>
+            <!-- الجدول وأدوات البحث -->
+            <VBox spacing="10" styleClass="table-section">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <TextField fx:id="searchField" promptText="🔍 Search by name or email..."
+                               prefWidth="300"/>
+                    <Button text="Search" onAction="#handleSearch" styleClass="search-btn"/>
+                </HBox>
+
+                <TableView fx:id="membersTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colId"      text="ID"      prefWidth="50"/>
+                        <TableColumn fx:id="colName"    text="Name"    prefWidth="180"/>
+                        <TableColumn fx:id="colEmail"   text="Email"   prefWidth="180"/>
+                        <TableColumn fx:id="colPhone"   text="Phone"   prefWidth="120"/>
+                        <TableColumn fx:id="colAddress" text="Address" prefWidth="200"/>
+                    </columns>
+                </TableView>
+
+                <Label fx:id="statusLabel" styleClass="status-label"/>
+            </VBox>
+
+            <!-- نموذج الإدخال -->
+            <VBox spacing="12" styleClass="form-section" prefWidth="300">
+                <Text text="Member Details" styleClass="form-title"/>
+
+                <Label text="Full Name *"/>
+                <TextField fx:id="fullNameField" promptText="Full name"/>
+
+                <Label text="Email"/>
+                <TextField fx:id="emailField" promptText="Email address"/>
+
+                <Label text="Phone"/>
+                <TextField fx:id="phoneField" promptText="Phone number"/>
+
+                <Label text="Address"/>
+                <TextField fx:id="addressField" promptText="Address"/>
+
+                <HBox spacing="10">
+                    <Button text="➕ Add"    onAction="#handleAdd"    styleClass="add-btn"    HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                    <Button text="✏ Update" onAction="#handleUpdate" styleClass="update-btn" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                </HBox>
+                <HBox spacing="10">
+                    <Button text="🗑 Delete" onAction="#handleDelete" styleClass="delete-btn" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                    <Button text="🧹 Clear"  onAction="#handleClear"  styleClass="clear-btn"  HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                </HBox>
+            </VBox>
+        </SplitPane>
+    </center>
+
+</BorderPane>
