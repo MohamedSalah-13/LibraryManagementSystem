@@ -1,295 +1,538 @@
-
 ```markdown
 # 📚 Library Management System
-### نظام إدارة المكتبة
+
+## نظام إدارة المكتبة
 
 ---
 
-## 🏛️ نظرة عامة
+## 1. Project Overview | نظرة عامة
 
-**نظام إدارة المكتبة** هو تطبيق سطح مكتب متكامل مبني بتقنية **JavaFX**، يتيح لمسؤولي المكتبة إدارة الكتب والأعضاء ومتابعة الإحصائيات بشكل سهل واحترافي.
+**Library Management System** is a JavaFX desktop application designed to help librarians manage library books, members, user profiles, and view useful library statistics through a simple and user-friendly interface.
 
-| | |
+هذا المشروع عبارة عن تطبيق سطح مكتب باستخدام **JavaFX** لإدارة المكتبة، ويتيح للمستخدم إدارة الكتب والأعضاء وعرض الإحصائيات وتعديل الملف الشخصي من خلال واجهة رسومية سهلة الاستخدام.
+
+---
+
+## 2. Project Information | معلومات المشروع
+
+| Item | Details |
 |---|---|
-| **الإصدار** | 1.0.0 |
-| **اللغة** | Java 21 |
-| **الواجهة** | JavaFX 21.0.2 |
-| **قاعدة البيانات** | MySQL |
+| Project Name | Library Management System |
+| Application Type | Desktop Application |
+| Programming Language | Java 21 |
+| UI Framework | JavaFX 21.0.2 |
+| Database | MySQL |
+| Database Connection | JDBC |
+| Build Tool | Maven |
+| Project Pattern | MVC-like Structure |
+| Number of Scenes | 6 Scenes |
 
 ---
 
-## ⚙️ متطلبات التشغيل
+## 3. Main Features | الخصائص الرئيسية
 
-قبل تشغيل البرنامج، تأكد من تثبيت ما يلي على جهازك:
+The application includes the following features:
 
-| البرنامج | الإصدار المطلوب | رابط التنزيل |
+- Login system connected to MySQL database.
+- User authentication using username and password.
+- Home page accessible only after successful login.
+- Dashboard with library statistics.
+- Books management with full CRUD operations.
+- Members management with full CRUD operations.
+- User profile page for updating user information.
+- Search functionality for books and members.
+- JavaFX TableView, Buttons, Labels, TextFields, PasswordFields, Alerts, Charts, and Layouts.
+- External MySQL database using JDBC.
+- CSS styling for better visual design.
+- Error handling for database operations and invalid input.
+
+---
+
+## 4. Project Requirements Coverage | تغطية متطلبات المشروع
+
+| Requirement | Status | Implementation |
 |---|---|---|
-| **Java JDK** | 21 أو أحدث | https://adoptium.net |
-| **MySQL Server** | 8.0 أو أحدث | https://dev.mysql.com/downloads |
-| **Maven** | 3.8 أو أحدث | https://maven.apache.org |
+| Desktop Application | ✅ Completed | JavaFX desktop application |
+| 4-6 Scenes | ✅ Completed | Login, Home, Dashboard, Books, Members, Profile |
+| Login Page | ✅ Completed | Validates username and password from database |
+| Error Messages | ✅ Completed | Shows errors for empty fields and invalid login |
+| Home Page | ✅ Completed | Displays authenticated user information and navigation |
+| Dashboard / Services | ✅ Completed | Shows statistics and chart |
+| External Database | ✅ Completed | MySQL database |
+| JDBC Connection | ✅ Completed | `DatabaseConnection.java` |
+| CRUD Operations | ✅ Completed | Books and Members |
+| UI Controls | ✅ Completed | Buttons, Labels, TextFields, Tables, Alerts |
+| Layouts | ✅ Completed | BorderPane, VBox, HBox, SplitPane |
+| Events | ✅ Completed | Button clicks, Enter key, table selection, mouse events |
+| Styling | ✅ Completed | CSS file |
+| Submission Files | ✅ Completed | Source code, SQL file, README, Maven configuration |
 
 ---
 
-## 🚀 خطوات الإعداد والتشغيل
+## 5. Application Scenes | شاشات التطبيق
 
-### الخطوة 1 — إعداد قاعدة البيانات
+The application contains 6 main scenes:
 
-1. افتح برنامج **MySQL Workbench** أو أي أداة MySQL
-2. قم بتشغيل الأوامر التالية:
-
-```sql
-CREATE DATABASE library_db;
-USE library_db;
+```text
+1. Login Scene      → User login and authentication
+2. Home Scene       → Main page after successful login
+3. Dashboard Scene  → Library statistics and chart
+4. Books Scene      → Manage books with CRUD operations
+5. Members Scene    → Manage library members with CRUD operations
+6. Profile Scene    → Update user profile information
 ```
+
+---
+
+## 6. Technologies Used | التقنيات المستخدمة
+
+| Technology | Purpose |
+|---|---|
+| Java 21 | Main programming language |
+| JavaFX | Building the desktop user interface |
+| FXML | Designing application scenes |
+| CSS | Styling the user interface |
+| MySQL | External relational database |
+| JDBC | Connecting Java application to MySQL |
+| Maven | Project build and dependency management |
+
+---
+
+## 7. Requirements Before Running | متطلبات التشغيل
+
+Before running the project, make sure the following tools are installed:
+
+| Tool | Required Version |
+|---|---|
+| Java JDK | 21 or later |
+| Maven | 3.8 or later |
+| MySQL Server | 8.0 or later |
+| IntelliJ IDEA | Recommended |
+
+---
+
+## 8. Database Setup | إعداد قاعدة البيانات
+
+The project uses a MySQL database named:
+
+```text
+library_db
 ```
 
+To create and prepare the database:
 
-3. افتح ملف `docs/library_db.sql` الموجود مع المشروع
-4. قم بتشغيل محتواه كاملاً لإنشاء الجداول وإضافة البيانات التجريبية
+1. Open **MySQL Workbench**, phpMyAdmin, or any MySQL client.
+2. Open the SQL file:
 
-### الخطوة 2 — ضبط كلمة مرور قاعدة البيانات
-
-افتح الملف:
+```text
+docs/library_db.sql
 ```
+
+3. Run the full SQL script.
+4. The script will create:
+  - Database `library_db`
+  - Table `users`
+  - Table `books`
+  - Table `members`
+  - Table `borrowings`
+  - Default admin user
+  - Sample books data
+
+---
+
+## 9. Default Login Account | بيانات الدخول الافتراضية
+
+After importing the database, use the following account to login:
+
+| Field | Value |
+|---|---|
+| Username | `admin` |
+| Password | `admin123` |
+
+---
+
+## 10. Database Connection Configuration | إعداد الاتصال بقاعدة البيانات
+
+The database connection is configured in:
+
+```text
 src/main/java/com/library/librarymanagementsystem/database/DatabaseConnection.java
 ```
 
+Default configuration:
 
-ابحث عن السطر:
 ```java
+private static final String URL = "jdbc:mysql://localhost:3306/library_db";
+private static final String USER = "root";
 private static final String PASSWORD = "";
 ```
 
+If your MySQL server has a password, update the `PASSWORD` value:
 
-وضع كلمة مرور MySQL الخاصة بجهازك بين علامتي الاقتباس.
-
-### الخطوة 3 — تشغيل البرنامج
-
-**من سطر الأوامر:**
-```shell script
-mvn javafx:run
+```java
+private static final String PASSWORD = "your_mysql_password";
 ```
 
-
-**من IntelliJ IDEA:**
-- افتح المشروع
-- شغّل ملف `Launcher.java` أو `Main.java`
-
 ---
 
-## 🔐 بيانات الدخول الافتراضية
+## 11. How to Run the Project | طريقة تشغيل المشروع
 
-عند فتح البرنامج لأول مرة، استخدم بيانات الدخول التالية:
+### Option 1: Run using Maven
 
-| الحقل | القيمة |
-|---|---|
-| **اسم المستخدم** | `admin` |
-| **كلمة المرور** | `admin123` |
+From the project root folder, run:
 
-> ⚠️ **يُنصح بتغيير كلمة المرور فور تسجيل الدخول لأول مرة** من خلال صفحة الملف الشخصي (Profile).
-
----
-
-## 🖥️ شاشات البرنامج ودليل الاستخدام
-
-### 1️⃣ شاشة تسجيل الدخول (Login)
-
-هي الشاشة الأولى التي تظهر عند فتح البرنامج.
-
-**الاستخدام:**
-- أدخل اسم المستخدم وكلمة المرور
-- اضغط زر **Login** أو اضغط **Enter** من لوحة المفاتيح
-- في حالة خطأ في البيانات ستظهر رسالة تنبيه واضحة
-
----
-
-### 2️⃣ الصفحة الرئيسية (Home)
-
-تظهر مباشرة بعد تسجيل الدخول بنجاح.
-
-**تحتوي على:**
-- اسم المستخدم المسجّل ودوره (Admin/Librarian) في أعلى الصفحة
-- أربعة أزرار للتنقل بين أقسام البرنامج:
-    - 📊 **Dashboard** — لوحة الإحصائيات
-    - 📖 **Books** — إدارة الكتب
-    - 👥 **Members** — إدارة الأعضاء
-    - 👤 **Profile** — الملف الشخصي
-- زر **Logout** للخروج من الحساب
-
----
-
-### 3️⃣ لوحة الإحصائيات (Dashboard)
-
-تعرض ملخصاً سريعاً لوضع المكتبة.
-
-**تحتوي على:**
-- إجمالي عدد الكتب في المكتبة
-- إجمالي عدد الأعضاء المسجّلين
-- عدد الكتب المستعارة حالياً
-- رسم بياني (Bar Chart) يوضح هذه الأرقام بشكل مرئي
-- زر **Home** للعودة إلى الصفحة الرئيسية
-
----
-
-### 4️⃣ إدارة الكتب (Books)
-
-الصفحة المركزية لإدارة جميع كتب المكتبة.
-
-#### عرض الكتب:
-- تظهر جميع الكتب في جدول يحتوي على: ID، العنوان، المؤلف، التصنيف، الكمية، السعر
-- اضغط على أي صف في الجدول لتحميل بياناته تلقائياً في حقول الإدخال
-
-#### البحث عن كتاب:
-1. اكتب اسم الكتاب أو المؤلف في حقل البحث
-2. اضغط زر **Search**
-3. ستظهر النتائج المطابقة في الجدول فوراً
-
-#### إضافة كتاب جديد:
-1. أدخل بيانات الكتاب في الحقول (العنوان والمؤلف إلزاميان ✱)
-2. اضغط زر **➕ Add**
-3. ستظهر رسالة تأكيد عند الإضافة الناجحة
-
-#### تعديل كتاب:
-1. اضغط على الكتاب في الجدول لتحميل بياناته
-2. عدّل ما تريد في الحقول
-3. اضغط زر **✏ Update**
-
-#### حذف كتاب:
-1. اضغط على الكتاب في الجدول
-2. اضغط زر **🗑 Delete**
-3. ستظهر نافذة تأكيد — اضغط **YES** للتأكيد
-
-#### مسح الحقول:
-- اضغط زر **🧹 Clear** لمسح جميع الحقول وإلغاء التحديد
-
----
-
-### 5️⃣ إدارة الأعضاء (Members)
-
-تعمل بنفس طريقة صفحة الكتب تماماً، وتُستخدم لإدارة أعضاء المكتبة.
-
-#### بيانات العضو:
-| الحقل | الوصف | إلزامي |
-|---|---|---|
-| **Full Name** | الاسم الكامل | ✅ نعم |
-| **Email** | البريد الإلكتروني | لا |
-| **Phone** | رقم الهاتف | لا |
-| **Address** | العنوان | لا |
-
-#### العمليات المتاحة:
-- **➕ Add** — إضافة عضو جديد
-- **✏ Update** — تعديل بيانات عضو موجود (بعد تحديده من الجدول)
-- **🗑 Delete** — حذف عضو (مع نافذة تأكيد)
-- **🧹 Clear** — مسح الحقول
-- **Search** — البحث بالاسم أو البريد الإلكتروني
-
----
-
-### 6️⃣ الملف الشخصي (Profile)
-
-يتيح للمستخدم تعديل بياناته الشخصية.
-
-**يمكن تعديل:**
-- الاسم الكامل
-- البريد الإلكتروني
-- كلمة المرور (اتركها فارغة إن لم ترد تغييرها)
-
-> 🔒 **اسم المستخدم (Username) لا يمكن تغييره.**
-
-**الخطوات:**
-1. عدّل البيانات التي تريد تغييرها
-2. اضغط زر **💾 Save Changes**
-3. ستظهر رسالة تأكيد عند الحفظ الناجح
-
----
-
-## 🗺️ خريطة التنقل
-
-```
-[تسجيل الدخول]
-       ↓
-  [الرئيسية] ────────────────────────────────────
-       │                │              │          │
-  [Dashboard]        [Books]       [Members]  [Profile]
-  لوحة الإحصائيات  إدارة الكتب  إدارة الأعضاء  الملف الشخصي
-       │                │              │          │
-       └────────────────┴──────────────┴──────────┘
-                               ↓
-                          [الرئيسية]
+```bash
+mvn clean javafx:run
 ```
 
+### Option 2: Run using IntelliJ IDEA
+
+1. Open IntelliJ IDEA.
+2. Choose **Open Project**.
+3. Select the `LibraryManagementSystem` folder.
+4. Wait until Maven downloads all dependencies.
+5. Make sure MySQL is running.
+6. Import `docs/library_db.sql`.
+7. Run `Main.java` or `Launcher.java`.
 
 ---
 
-## 🗄️ هيكل قاعدة البيانات
+## 12. Project Structure | هيكل المشروع
 
-يستخدم البرنامج قاعدة بيانات `library_db` تحتوي على 4 جداول:
-
-| الجدول | الوصف |
-|---|---|
-| `users` | حسابات المستخدمين (مشرف / أمين مكتبة) |
-| `books` | بيانات الكتب (العنوان، المؤلف، ISBN، التصنيف، الكمية، السعر) |
-| `members` | بيانات أعضاء المكتبة |
-| `borrowings` | سجلات استعارة الكتب وإعادتها |
-
----
-
-## 🏗️ هيكل ملفات المشروع
-
-```
+```text
 LibraryManagementSystem/
+├── .mvn/
 ├── docs/
-│   ├── library_db.sql       ← سكريبت قاعدة البيانات
-│   └── README.md            ← هذا الملف
-├── src/main/java/com/library/librarymanagementsystem/
-│   ├── controllers/         ← منطق كل شاشة
-│   ├── database/            ← الاتصال بـ MySQL
-│   ├── models/              ← نماذج البيانات (User, Book, Member)
-│   ├── utils/               ← أدوات مساعدة (SceneManager)
-│   ├── Main.java            ← نقطة البداية
-│   └── Launcher.java        ← مشغّل بديل
-├── src/main/resources/      ← ملفات FXML + CSS
-└── pom.xml                  ← إعدادات Maven والمكتبات
+│   ├── lib.md
+│   ├── library_db.sql
+│   ├── main.txt
+│   └── README.md
+├── src/
+│   └── main/
+│       ├── java/
+│       │   ├── com/library/librarymanagementsystem/
+│       │   │   ├── controllers/
+│       │   │   │   ├── BooksController.java
+│       │   │   │   ├── DashboardController.java
+│       │   │   │   ├── HomeController.java
+│       │   │   │   ├── LoginController.java
+│       │   │   │   ├── MembersController.java
+│       │   │   │   └── ProfileController.java
+│       │   │   ├── database/
+│       │   │   │   └── DatabaseConnection.java
+│       │   │   ├── models/
+│       │   │   │   ├── Book.java
+│       │   │   │   ├── Member.java
+│       │   │   │   └── User.java
+│       │   │   ├── utils/
+│       │   │   │   └── SceneManager.java
+│       │   │   ├── Launcher.java
+│       │   │   └── Main.java
+│       │   └── module-info.java
+│       └── resources/
+│           └── com/library/librarymanagementsystem/
+│               ├── books.fxml
+│               ├── dashboard.fxml
+│               ├── home.fxml
+│               ├── login.fxml
+│               ├── members.fxml
+│               ├── profile.fxml
+│               └── styles.css
+├── mvnw
+├── mvnw.cmd
+└── pom.xml
 ```
 
-
 ---
 
-## ❓ حل المشكلات الشائعة
+## 13. Database Structure | هيكل قاعدة البيانات
 
-| المشكلة | الحل |
+The database contains 4 main tables:
+
+| Table | Description |
 |---|---|
-| **❌ Database connection failed** | تأكد أن MySQL يعمل وأن كلمة المرور في `DatabaseConnection.java` صحيحة |
-| **❌ Invalid username or password** | تأكد من تشغيل ملف `library_db.sql` لإنشاء المستخدم الافتراضي |
-| **البرنامج لا يفتح** | تأكد أن Java 21 مثبّت وأن متغير `JAVA_HOME` مضبوط بشكل صحيح |
-| **الجداول غير موجودة** | شغّل ملف `docs/library_db.sql` من جديد على قاعدة البيانات |
+| `users` | Stores system users and login credentials |
+| `books` | Stores book information |
+| `members` | Stores library member information |
+| `borrowings` | Stores book borrowing records |
 
----
+### Tables Summary
 
-## 📞 الدعم الفني
+```text
+users
+- id
+- username
+- password
+- full_name
+- email
+- role
+- profile_pic
+- created_at
 
-لأي استفسار أو مشكلة تقنية، يرجى التواصل مع فريق التطوير مع تضمين:
-1. وصف المشكلة
-2. رسالة الخطأ التي ظهرت (إن وجدت)
-3. نظام التشغيل وإصدار Java المستخدم
+books
+- id
+- title
+- author
+- isbn
+- category
+- quantity
+- available
+- price
+- published_year
+- added_at
 
----
+members
+- id
+- full_name
+- email
+- phone
+- address
+- joined_at
 
-*تم تطوير هذا النظام باستخدام Java 21 · JavaFX 21.0.2 · MySQL · Maven*
+borrowings
+- id
+- book_id
+- member_id
+- borrow_date
+- return_date
+- status
 ```
+
 ---
 
-تم إنشاء ملف `README.md` الاحترافي الكامل في مجلد `docs/`. يحتوي على:
+## 14. User Guide | دليل الاستخدام
 
-| القسم | المحتوى |
+### 14.1 Login Page
+
+The Login page is the first screen in the application.
+
+User can:
+
+- Enter username.
+- Enter password.
+- Click Login button.
+- Press Enter from keyboard to login.
+- See error messages if fields are empty or credentials are invalid.
+
+---
+
+### 14.2 Home Page
+
+The Home page appears after successful login.
+
+It contains:
+
+- Welcome message.
+- Current user full name.
+- User role.
+- Navigation buttons:
+  - Dashboard
+  - Books
+  - Members
+  - Profile
+- Logout button.
+
+---
+
+### 14.3 Dashboard Page
+
+The Dashboard page displays important library statistics.
+
+It shows:
+
+- Total number of books.
+- Total number of members.
+- Number of currently borrowed books.
+- Bar chart to visualize statistics.
+
+---
+
+### 14.4 Books Page
+
+The Books page is used to manage library books.
+
+Available operations:
+
+| Operation | Description |
 |---|---|
-| **نظرة عامة** | وصف المشروع والتقنيات المستخدمة |
-| **متطلبات التشغيل** | Java, MySQL, Maven مع روابط التنزيل |
-| **خطوات الإعداد** | 3 خطوات واضحة لتشغيل البرنامج |
-| **بيانات الدخول** | اسم المستخدم وكلمة المرور الافتراضية |
-| **دليل كل شاشة** | شرح تفصيلي لكل صفحة وطريقة استخدامها |
-| **خريطة التنقل** | رسم توضيحي للتنقل بين الشاشات |
-| **هيكل قاعدة البيانات** | شرح الجداول الأربعة |
-| **هيكل الملفات** | شجرة المشروع |
-| **حل المشكلات** | أبرز الأخطاء وحلولها |
+| Add | Add a new book |
+| Update | Update selected book |
+| Delete | Delete selected book |
+| Search | Search by title or author |
+| Clear | Clear input fields |
+
+Book fields:
+
+- Title
+- Author
+- ISBN
+- Category
+- Quantity
+- Price
+- Published Year
+
+---
+
+### 14.5 Members Page
+
+The Members page is used to manage library members.
+
+Available operations:
+
+| Operation | Description |
+|---|---|
+| Add | Add a new member |
+| Update | Update selected member |
+| Delete | Delete selected member |
+| Search | Search by name or email |
+| Clear | Clear input fields |
+
+Member fields:
+
+- Full Name
+- Email
+- Phone
+- Address
+
+---
+
+### 14.6 Profile Page
+
+The Profile page allows the logged-in user to update personal information.
+
+User can update:
+
+- Full name.
+- Email.
+- Password.
+
+The username is displayed but cannot be changed.
+
+---
+
+## 15. Navigation Map | خريطة التنقل
+
+```text
+Login
+  |
+  v
+Home
+  |
+  |----> Dashboard
+  |
+  |----> Books
+  |
+  |----> Members
+  |
+  |----> Profile
+  |
+  v
+Logout -> Login
+```
+
+---
+
+## 16. Error Handling | معالجة الأخطاء
+
+The application handles common errors such as:
+
+- Empty login fields.
+- Invalid username or password.
+- Database connection failure.
+- SQL exceptions.
+- Missing selected row before update or delete.
+- Invalid required fields.
+- Duplicate database values such as repeated username, email, or ISBN.
+
+---
+
+## 17. Common Problems and Solutions | المشاكل الشائعة وحلولها
+
+| Problem | Possible Solution |
+|---|---|
+| Database connection failed | Make sure MySQL is running and database credentials are correct |
+| Unknown database `library_db` | Run `docs/library_db.sql` |
+| Invalid username or password | Make sure the SQL file was imported successfully |
+| JavaFX application does not start | Make sure Java 21 is installed |
+| Maven dependencies not found | Run `mvn clean install` or reload Maven project |
+| Tables do not exist | Re-import `docs/library_db.sql` |
+| MySQL password error | Update `PASSWORD` in `DatabaseConnection.java` |
+
+---
+
+## 18. Submission Instructions | تعليمات التسليم
+
+For Edugate submission, it is recommended to upload the full project as a ZIP file.
+
+Recommended ZIP name:
+
+```text
+StudentName_ID_LibraryManagementSystem.zip
+```
+
+The ZIP file should include:
+
+```text
+LibraryManagementSystem/
+├── src/
+├── docs/
+│   ├── library_db.sql
+│   ├── main.txt
+│   └── README.md
+├── pom.xml
+├── mvnw
+├── mvnw.cmd
+└── .mvn/
+```
+
+Important files for grading:
+
+| File / Folder | Importance |
+|---|---|
+| `src/` | Contains Java source code and FXML files |
+| `pom.xml` | Contains Maven dependencies and run configuration |
+| `docs/library_db.sql` | Required to create the MySQL database |
+| `docs/README.md` | Explains setup and usage |
+| `.mvn/`, `mvnw`, `mvnw.cmd` | Allow running Maven wrapper |
+
+> Do not submit only an EXE or JAR file. The source code and SQL file are required for reviewing and grading the project.
+
+---
+
+## 19. Notes | ملاحظات
+
+- Make sure MySQL server is running before opening the application.
+- Make sure the database script is imported before login.
+- If the database password is different on another computer, update `DatabaseConnection.java`.
+- The default user is only for testing and demonstration.
+- This project is developed for Object-Oriented Programming 2 course requirements.
+
+---
+
+## 20. Final Summary | الخلاصة
+
+This project satisfies the main course requirements:
+
+- JavaFX Desktop Application.
+- 6 Scenes.
+- MySQL external database.
+- JDBC connection.
+- Login authentication.
+- CRUD operations.
+- Dashboard statistics.
+- User-friendly interface.
+- CSS styling.
+- Error handling.
+- Maven project structure.
+
+---
+
+Developed using:
+
+```text
+Java 21
+JavaFX 21.0.2
+MySQL
+JDBC
+Maven
 ```

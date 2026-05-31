@@ -64,7 +64,6 @@ public class ProfileController {
             ps.close();
 
             // تحديث البيانات في الذاكرة
-            // تحديث البيانات في الذاكرة
             SceneManager.currentUser.setFullName(fullName);
             SceneManager.currentUser.setEmail(email);
 
