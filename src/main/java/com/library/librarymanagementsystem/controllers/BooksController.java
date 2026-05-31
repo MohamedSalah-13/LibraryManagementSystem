@@ -35,6 +35,8 @@ public class BooksController {
 
     @FXML
     public void initialize() {
+        if (!SceneManager.requireLogin()) return;
+
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
         colAuthor.setCellValueFactory(new PropertyValueFactory<>("author"));
@@ -179,22 +181,68 @@ public class BooksController {
     }
 
     private boolean validateFields() {
-        if (titleField.getText().isEmpty() || authorField.getText().isEmpty()) {
+        if (titleField.getText().trim().isEmpty() || authorField.getText().trim().isEmpty()) {
             showStatus("⚠ Title and Author are required.");
             return false;
         }
+
+        if (!isInteger(quantityField.getText(), true)) {
+            showStatus("⚠ Quantity must be a valid number.");
+            showErrorAlert("Invalid Quantity", "Please enter a valid numeric value for quantity.");
+            return false;
+        }
+
+        if (!isDouble(priceField.getText(), true)) {
+            showStatus("⚠ Price must be a valid number.");
+            showErrorAlert("Invalid Price", "Please enter a valid numeric value for price.");
+            return false;
+        }
+
+        if (!isInteger(yearField.getText(), true)) {
+            showStatus("⚠ Published year must be a valid number.");
+            showErrorAlert("Invalid Year", "Please enter a valid numeric value for published year.");
+            return false;
+        }
+
         return true;
     }
 
+    private boolean isInteger(String value, boolean allowEmpty) {
+        if (value == null || value.trim().isEmpty()) return allowEmpty;
+        try {
+            Integer.parseInt(value.trim());
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    private boolean isDouble(String value, boolean allowEmpty) {
+        if (value == null || value.trim().isEmpty()) return allowEmpty;
+        try {
+            Double.parseDouble(value.trim());
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    private void showErrorAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
     private void setStatementValues(PreparedStatement ps) throws SQLException {
-        ps.setString(1, titleField.getText());
-        ps.setString(2, authorField.getText());
-        ps.setString(3, isbnField.getText());
-        ps.setString(4, categoryField.getText());
-        ps.setInt(5, Integer.parseInt(quantityField.getText().isEmpty() ? "1" : quantityField.getText()));
-        ps.setInt(6, Integer.parseInt(quantityField.getText().isEmpty() ? "1" : quantityField.getText()));
-        ps.setDouble(7, Double.parseDouble(priceField.getText().isEmpty() ? "0" : priceField.getText()));
-        ps.setInt(8, Integer.parseInt(yearField.getText().isEmpty() ? "2024" : yearField.getText()));
+        ps.setString(1, titleField.getText().trim());
+        ps.setString(2, authorField.getText().trim());
+        ps.setString(3, isbnField.getText().trim());
+        ps.setString(4, categoryField.getText().trim());
+        ps.setInt(5, Integer.parseInt(quantityField.getText().trim().isEmpty() ? "1" : quantityField.getText().trim()));
+        ps.setInt(6, Integer.parseInt(quantityField.getText().trim().isEmpty() ? "1" : quantityField.getText().trim()));
+        ps.setDouble(7, Double.parseDouble(priceField.getText().trim().isEmpty() ? "0" : priceField.getText().trim()));
+        ps.setInt(8, Integer.parseInt(yearField.getText().trim().isEmpty() ? "2024" : yearField.getText().trim()));
     }
 
     private void showStatus(String msg) {

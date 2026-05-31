@@ -4,6 +4,29 @@
     -fx-background-color: #F0F4F8;
 }
 
+.dark-root {
+    -fx-background-color: #1A202C;
+}
+
+.dark-root .home-center,
+.dark-root .dashboard-center {
+    -fx-background-color: #1A202C;
+}
+
+.dark-root .home-title,
+.dark-root .home-subtitle,
+.dark-root .info-label {
+    -fx-fill: white;
+    -fx-text-fill: white;
+}
+
+.dark-root .home-card-btn,
+.dark-root .stat-card,
+.dark-root .info-card {
+    -fx-background-color: #2D3748;
+    -fx-text-fill: white;
+}
+
 /* ===== صفحة تسجيل الدخول ===== */
 .login-root {
     -fx-background-color: linear-gradient(to bottom right, #1a1a2e, #16213e, #0f3460);
@@ -90,6 +113,20 @@
 .home-center   { -fx-padding: 50; }
 .home-title    { -fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: #2D3748; }
 .home-subtitle { -fx-font-size: 15px; -fx-fill: #718096; }
+
+.info-card {
+    -fx-background-color: white;
+    -fx-padding: 15 25;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.10), 6, 0, 0, 2);
+}
+
+.info-label {
+    -fx-text-fill: #2D3748;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
 .home-card-btn {
     -fx-background-color: white;
     -fx-text-fill: #2D3748;
@@ -103,6 +140,8 @@
     -fx-background-color: #4299E1;
     -fx-text-fill: white;
 }
+
+/* ===== Dashboard ===== */
 
 /* ===== Dashboard ===== */
 .dashboard-center { -fx-padding: 30; }

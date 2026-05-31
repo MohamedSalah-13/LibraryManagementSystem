@@ -5,6 +5,7 @@ import com.library.librarymanagementsystem.utils.SceneManager;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 
 import java.sql.*;
@@ -18,12 +19,15 @@ public class DashboardController {
 
     @FXML
     public void initialize() {
+        if (!SceneManager.requireLogin()) return;
         loadStatistics();
     }
 
     private void loadStatistics() {
         try {
             Connection conn = DatabaseConnection.getConnection();
+
+            statsChart.getData().clear();
 
             // إجمالي الكتب
             ResultSet rs1 = conn.createStatement().executeQuery("SELECT COUNT(*) FROM books");
@@ -46,10 +50,47 @@ public class DashboardController {
             series.getData().add(new XYChart.Data<>("Borrowed",      Integer.parseInt(borrowedLabel.getText())));
             statsChart.getData().add(series);
 
+            rs1.close();
+            rs2.close();
+            rs3.close();
+
         } catch (SQLException e) {
-            e.printStackTrace();
+            showAlert("Database Error", "Could not load dashboard statistics:\n" + e.getMessage());
         }
     }
 
-    @FXML public void goHome() { SceneManager.switchScene("home.fxml"); }
+    @FXML
+    public void handleRefresh() {
+        loadStatistics();
+        showAlert("Dashboard Refreshed", "The latest library statistics have been loaded successfully.");
+    }
+
+    @FXML
+    public void showReport() {
+        String report = """
+                Library Summary Report
+
+                Total Books: %s
+                Total Members: %s
+                Currently Borrowed: %s
+                """.formatted(
+                totalBooksLabel.getText(),
+                totalMembersLabel.getText(),
+                borrowedLabel.getText()
+        );
+
+        showAlert("Library Report", report);
+    }
+
+    @FXML public void goHome()    { SceneManager.switchScene("home.fxml"); }
+    @FXML public void goBooks()   { SceneManager.switchScene("books.fxml"); }
+    @FXML public void goMembers() { SceneManager.switchScene("members.fxml"); }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 }

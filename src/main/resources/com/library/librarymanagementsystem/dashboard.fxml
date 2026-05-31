@@ -17,7 +17,7 @@
     </top>
 
     <center>
-        <VBox spacing="30" styleClass="dashboard-center" alignment="CENTER">
+        <VBox spacing="25" styleClass="dashboard-center" alignment="CENTER">
             <!-- بطاقات الإحصائيات -->
             <HBox spacing="20" alignment="CENTER">
                 <VBox styleClass="stat-card" alignment="CENTER" spacing="5">
@@ -32,6 +32,13 @@
                     <Text text=" Borrowed" styleClass="stat-title"/>
                     <Label fx:id="borrowedLabel" text="0" styleClass="stat-number"/>
                 </VBox>
+            </HBox>
+
+            <HBox alignment="CENTER" spacing="12">
+                <Button text="Refresh Statistics" onAction="#handleRefresh" styleClass="search-btn"/>
+                <Button text="Show Report" onAction="#showReport" styleClass="primary-btn"/>
+                <Button text="Manage Books" onAction="#goBooks" styleClass="add-btn"/>
+                <Button text="Manage Members" onAction="#goMembers" styleClass="update-btn"/>
             </HBox>
 
             <!-- الرسم البياني -->

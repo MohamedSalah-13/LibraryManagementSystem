@@ -14,24 +14,36 @@
             <HBox HBox.hgrow="ALWAYS"/>
             <Label fx:id="welcomeLabel" styleClass="nav-welcome"/>
             <Label fx:id="roleLabel"   styleClass="nav-role"/>
+            <Button text="Notifications" onAction="#showNotifications" styleClass="nav-btn"/>
+            <Button text="Theme" onAction="#handleToggleTheme" styleClass="nav-btn"/>
+            <Button text="Full Screen" onAction="#handleFullScreen" styleClass="nav-btn"/>
             <Button text="Logout" onAction="#handleLogout" styleClass="logout-btn"/>
         </HBox>
     </top>
 
     <!-- المحتوى الرئيسي -->
     <center>
-        <VBox alignment="CENTER" spacing="30" styleClass="home-center">
+        <VBox alignment="CENTER" spacing="25" styleClass="home-center">
             <Text text="Welcome to Library Management System" styleClass="home-title"/>
-            <Text text="Choose a section to get started"     styleClass="home-subtitle"/>
+            <Text text="Choose a section to get started" styleClass="home-subtitle"/>
+
+            <VBox alignment="CENTER" spacing="8" styleClass="info-card">
+                <Label fx:id="dateTimeLabel" text="Today:" styleClass="info-label"/>
+                <Label fx:id="windowSizeLabel" text="Window Size:" styleClass="info-label"/>
+            </VBox>
 
             <HBox alignment="CENTER" spacing="20">
                 <Button text=" Dashboard" onAction="#goToDashboard"
+                        onMouseEntered="#handleMouseEnter"
                         styleClass="home-card-btn" prefWidth="180" prefHeight="100"/>
-                <Button text=" Books"     onAction="#goToBooks"
+                <Button text=" Books" onAction="#goToBooks"
+                        onMouseEntered="#handleMouseEnter"
                         styleClass="home-card-btn" prefWidth="180" prefHeight="100"/>
-                <Button text=" Members"   onAction="#goToMembers"
+                <Button text=" Members" onAction="#goToMembers"
+                        onMouseEntered="#handleMouseEnter"
                         styleClass="home-card-btn" prefWidth="180" prefHeight="100"/>
-                <Button text=" Profile"   onAction="#goToProfile"
+                <Button text=" Profile" onAction="#goToProfile"
+                        onMouseEntered="#handleMouseEnter"
                         styleClass="home-card-btn" prefWidth="180" prefHeight="100"/>
             </HBox>
         </VBox>

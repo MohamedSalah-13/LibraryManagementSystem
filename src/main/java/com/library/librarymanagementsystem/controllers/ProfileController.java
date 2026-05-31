@@ -18,6 +18,8 @@ public class ProfileController {
 
     @FXML
     public void initialize() {
+        if (!SceneManager.requireLogin()) return;
+
         User u = SceneManager.currentUser;
         if (u != null) {
             usernameField.setText(u.getUsername());
@@ -62,10 +64,17 @@ public class ProfileController {
             ps.close();
 
             // تحديث البيانات في الذاكرة
+            // تحديث البيانات في الذاكرة
             SceneManager.currentUser.setFullName(fullName);
             SceneManager.currentUser.setEmail(email);
 
             statusLabel.setText("✅ Profile updated successfully!");
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Profile Updated");
+            alert.setHeaderText(null);
+            alert.setContentText("Your profile information has been updated successfully.");
+            alert.showAndWait();
         } catch (SQLException e) {
             statusLabel.setText("❌ Error: " + e.getMessage());
         }

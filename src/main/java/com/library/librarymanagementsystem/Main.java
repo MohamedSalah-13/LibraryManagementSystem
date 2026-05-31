@@ -22,6 +22,8 @@ public class Main extends Application {
         stage.setTitle(" Library Management System");
         stage.setScene(scene);
         stage.setResizable(true);
+        stage.setMinWidth(900);
+        stage.setMinHeight(600);
         stage.show();
     }
 

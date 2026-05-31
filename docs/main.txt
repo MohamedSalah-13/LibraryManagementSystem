@@ -17,6 +17,7 @@ The Desktop Application consists of at least 4-6 Scenes and at least one Externa
 •	Login page: The Login page is the first thing users see when they open your Desktop Application. Its primary purpose is to make a positive and lasting first impression which contains:
 o	 A method to validate user input against the database records.
 o	Display appropriate error messages if the username or password is incorrect or if any field is left empty.
+
 •	Home Page: Design a home page using JavaFX that provides a welcoming interface for users which includes the following:
 o	 Appropriate components to display relevant information or features available in the application. 
 o	Ensure that the home page is accessible only after successful authentication of users' credentials.
@@ -27,17 +28,13 @@ o	Allow users to customize their home page layout or preferences, such as theme 
 o	Display dynamic content or updates relevant to the user, such as news feeds, calendar events, to do list, appointments, or upcoming tasks.
 o	Handle common events such as mouse clicks, key presses, mouse movements, and window resizing.
 
-
-
-
-
-
 •	Dashboard/Services: In this section, you can provide the products or services you offer. Include detailed descriptions, high-quality images, and pricing information if applicable. 
 o	Organize the dashboard layout to display key information and interactive components efficiently.
 o	Present relevant data or statistics that are essential for users to monitor or manage, such as financial summaries, task lists, or analytics.
 o	Include interactive components such as buttons, charts, or tables to allow users to perform actions directly from the dashboard, such as creating new entries, updating settings, or viewing detailed reports.
 o	Allow users to customize the layout or content of the dashboard based on their preferences, such as rearranging widgets or selecting which data to display.
-o	Use different types of events. 
+o	Use different types of events.
+
 •	Database Design: Design an appropriate database schema using MySQL or any other relational database management system (RDBMS) that aligns with the requirements of the desktop application.
 o	Define tables, columns, and relationships based on the data entities and their associations within the application.
 o	Establish a connection between the JavaFX desktop application and the database using JDBC (Java Database Connectivity) for seamless data interaction.

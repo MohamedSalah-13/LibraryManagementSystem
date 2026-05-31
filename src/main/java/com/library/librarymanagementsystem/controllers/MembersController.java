@@ -13,24 +13,36 @@ import java.sql.*;
 
 public class MembersController {
 
-    @FXML private TableView<Member>           membersTable;
-    @FXML private TableColumn<Member, Integer> colId;
-    @FXML private TableColumn<Member, String>  colName;
-    @FXML private TableColumn<Member, String>  colEmail;
-    @FXML private TableColumn<Member, String>  colPhone;
-    @FXML private TableColumn<Member, String>  colAddress;
-
-    @FXML private TextField fullNameField;
-    @FXML private TextField emailField;
-    @FXML private TextField phoneField;
-    @FXML private TextField addressField;
-    @FXML private TextField searchField;
-    @FXML private Label     statusLabel;
-
     private final ObservableList<Member> memberList = FXCollections.observableArrayList();
+    @FXML
+    private TableView<Member> membersTable;
+    @FXML
+    private TableColumn<Member, Integer> colId;
+    @FXML
+    private TableColumn<Member, String> colName;
+    @FXML
+    private TableColumn<Member, String> colEmail;
+    @FXML
+    private TableColumn<Member, String> colPhone;
+    @FXML
+    private TableColumn<Member, String> colAddress;
+    @FXML
+    private TextField fullNameField;
+    @FXML
+    private TextField emailField;
+    @FXML
+    private TextField phoneField;
+    @FXML
+    private TextField addressField;
+    @FXML
+    private TextField searchField;
+    @FXML
+    private Label statusLabel;
 
     @FXML
     public void initialize() {
+        if (!SceneManager.requireLogin()) return;
+
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
@@ -91,7 +103,10 @@ public class MembersController {
     @FXML
     public void handleUpdate() {
         Member selected = membersTable.getSelectionModel().getSelectedItem();
-        if (selected == null) { showStatus("⚠ Select a member to update."); return; }
+        if (selected == null) {
+            showStatus("⚠ Select a member to update.");
+            return;
+        }
         if (!validateFields()) return;
         try {
             Connection conn = DatabaseConnection.getConnection();
@@ -112,7 +127,10 @@ public class MembersController {
     @FXML
     public void handleDelete() {
         Member selected = membersTable.getSelectionModel().getSelectedItem();
-        if (selected == null) { showStatus("⚠ Select a member to delete."); return; }
+        if (selected == null) {
+            showStatus("⚠ Select a member to delete.");
+            return;
+        }
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
                 "Delete member: " + selected.getFullName() + "?",
@@ -148,8 +166,15 @@ public class MembersController {
         membersTable.setItems(filtered);
     }
 
-    @FXML public void handleClear() { clearFields(); }
-    @FXML public void goHome()      { SceneManager.switchScene("home.fxml"); }
+    @FXML
+    public void handleClear() {
+        clearFields();
+    }
+
+    @FXML
+    public void goHome() {
+        SceneManager.switchScene("home.fxml");
+    }
 
     private void populateFields(Member m) {
         fullNameField.setText(m.getFullName());
@@ -172,6 +197,13 @@ public class MembersController {
             showStatus("⚠ Full Name is required.");
             return false;
         }
+
+        String email = emailField.getText().trim();
+        if (!email.isEmpty() && !email.contains("@")) {
+            showStatus("⚠ Please enter a valid email address.");
+            return false;
+        }
+
         return true;
     }
 
